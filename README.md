@@ -22,3 +22,11 @@ After you have the db create in your local `db/` folder you can run the app for 
 npm install
 gulp
 ```
+DefaultRoute
+
+## Caveats of Alt
+
+Note: Alt does some weird shit where you must call `this.actions.<method-name>`
+order to access other actions defined on an action creators prototype. This
+super unintuitive and not obvious. Pretty lame, but other than this I like A
+so far.
