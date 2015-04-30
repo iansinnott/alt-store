@@ -6,19 +6,25 @@ var { RouteHandler, Link } = require('react-router');
 require('./Layout.styl');
 require("font-awesome-webpack");
 
+var ItemStore = require('../stores/ItemStore.js');
+var ItemActions = require('../actions/ItemActions.js');
+
 /**
  * @module Layout
  */
 module.exports = React.createClass({
 
   getInitialState() {
-    return {};
+    return ItemStore.getState();
   },
 
   componentDidMount() {
+    ItemStore.listen(this._onChange);
+    ItemActions.fetchItems();
   },
 
   componentWillUnmount() {
+    ItemStore.unlisten(this._onChange);
   },
 
   render() {
@@ -37,10 +43,15 @@ module.exports = React.createClass({
         </header>
         <div className="container">
           <RouteHandler
+            items={this.state.items}
             {...this.props} />
         </div>
       </div>
     );
+  },
+
+  _onChange(state) {
+    this.setState(state);
   }
 
 });

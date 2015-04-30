@@ -3,6 +3,8 @@ var Router = require('react-router');
 var { Route, DefaultRoute } = Router;
 
 var Layout = require('./components/Layout.js');
+var ItemList = require('./components/Items/ItemList.js');
+var ItemDetails = require('./components/Items/ItemDetails.js');
 
 var Home = React.createClass({
 
@@ -31,7 +33,8 @@ var Cart = React.createClass({
 // Routes
 module.exports = (
   <Route path='/' handler={Layout}>
-    <DefaultRoute name='items' handler={Home} />
+    <DefaultRoute name='items' handler={ItemList} />
+    <Route name='item-details' path='items/:id' handler={ItemDetails} />
     <Route name='cart' handler={Cart} />
   </Route>
 );
