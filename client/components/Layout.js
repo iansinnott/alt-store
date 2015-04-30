@@ -12,7 +12,7 @@ require("font-awesome-webpack");
 module.exports = React.createClass({
 
   getInitialState() {
-    return getStateFromStores();
+    return {};
   },
 
   componentDidMount() {

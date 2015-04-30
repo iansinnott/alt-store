@@ -16,9 +16,22 @@ var Home = React.createClass({
 
 });
 
+var Cart = React.createClass({
+
+  render() {
+    return (
+      <div className='Cart'>
+        <span className='temp'>Cart</span>
+      </div>
+    );
+  }
+
+});
+
 // Routes
 module.exports = (
   <Route path='/' handler={Layout}>
     <DefaultRoute name='items' handler={Home} />
+    <Route name='cart' handler={Cart} />
   </Route>
 );
