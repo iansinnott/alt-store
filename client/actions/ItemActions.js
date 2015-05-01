@@ -1,7 +1,7 @@
 // var _ = require('lodash');
 
 var alt = require('../alt.js');
-var ItemAPI = require('../utils/ItemAPI.js');
+var ItemAPI = require('../lib/ItemAPI.js');
 
 class ItemActions {
 
@@ -31,8 +31,6 @@ class ItemActions {
 
     // We dispatch an event here so that we can have loading state.
     this.dispatch();
-
-    console.log(this);
 
     // NOTE: This is one thing I really don't like about Alt so far. It's too
     // opaque and non-obvious what `this` will actually end up being after you

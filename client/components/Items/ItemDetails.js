@@ -2,16 +2,42 @@
 
 var React = require('react');
 var debug = require('debug')('app:ItemDetails');
+var _ = require('lodash');
+var { Link } = require('react-router');
+
+var ItemStore = require('../../stores/ItemStore.js');
+var { formatMoney } = require('../../lib/utils.js');
 
 /**
  * @module ItemDetails
  */
 module.exports = React.createClass({
 
+  /*
+   * TODO: Dafuq. Where is the right place to get a single model?? Should I
+   * query the store directly or should the whole collection be passed down to
+   * every subcomponent that needs it from the original state-getter the layout?
+   * Why is all of no one talking about best practices in making remote request
+   * sand in routing in flux?
+   */
   render() {
+    var id = this.props.params.id;
+    var item = _.filter(this.props.items, { _id: id })[0];
+
+    // Short circuit if there is not yet a model to display
+    if (!item) return <span class='temp'>Loading...</span>;
+
     return (
       <div className='ItemDetails'>
-        <span className='temp'>Item Details page</span>
+        <img src={item.thumbnail} />
+        <p className='item-name'>{item.name}</p>
+        <p className="price">${formatMoney(item.price)}</p>
+        <Link
+          to='item-details'
+          className='btn'
+          params={{ id: item._id }}
+          >Item Details</Link>
+        <a className="btn">Add to cart</a>
       </div>
     );
   }

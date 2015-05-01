@@ -4,6 +4,8 @@ var React = require('react');
 var debug = require('debug')('app:ItemList');
 var { Link } = require('react-router');
 
+var { formatMoney } = require('../../lib/utils.js');
+
 /**
  * @module ItemList
  */
@@ -15,7 +17,7 @@ module.exports = React.createClass({
         <li key={i} className='item'>
           <img src={item.thumbnail} />
           <p className='item-name'>{item.name}</p>
-          <p className="price">{item.price}</p>
+          <p className="price">${formatMoney(item.price)}</p>
           <Link
             to='item-details'
             className='btn'
