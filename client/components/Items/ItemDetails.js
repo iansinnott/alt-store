@@ -8,6 +8,8 @@ var { Link } = require('react-router');
 var ItemStore = require('../../stores/ItemStore.js');
 var { formatMoney } = require('../../lib/utils.js');
 
+require('./Item.styl');
+
 /**
  * @module ItemDetails
  */
@@ -27,16 +29,16 @@ module.exports = React.createClass({
     // Short circuit if there is not yet a model to display
     if (!item) return <span class='temp'>Loading...</span>;
 
+    var description = item.description.split("\n").map((para) => {
+      return <p>{para}</p>;
+    });
+
     return (
       <div className='ItemDetails'>
         <img src={item.thumbnail} />
         <p className='item-name'>{item.name}</p>
         <p className="price">${formatMoney(item.price)}</p>
-        <Link
-          to='item-details'
-          className='btn'
-          params={{ id: item._id }}
-          >Item Details</Link>
+        {description}
         <a className="btn">Add to cart</a>
       </div>
     );

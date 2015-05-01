@@ -25,26 +25,31 @@ var ITEMS = [
     name: 'MongoDB',
     thumbnail: 'http://www.mongodb.org/static/images/mongodb-logo.png',
     price: 3000,
+    inCart: false,
     description: "This is an amazing item. It's the most base-ey database out there. Super duper mongo rager\nHey new line mongo rager."
   },{
     name: 'Groupon',
     thumbnail: 'http://upload.wikimedia.org/wikipedia/en/thumb/1/10/Groupon_logo.svg/1280px-Groupon_logo.svg.png',
     price: 2000,
+    inCart: false,
     description: "Groupon is a company that does stuff and things. Who knew you couold just buy this company?\nIt all started back in some old time when things were extremely funny."
   },{
     name: 'RethinkDB',
     thumbnail: 'https://platzi.com/blog/content/images/2015/03/rethinkdb.png',
     price: 2200,
+    inCart: false,
     description: "This is an amazing item. It's the most base-ey database out there. Super duper mongo rager\nHey new line mongo rager."
   },{
     name: 'Riak',
     thumbnail: 'http://blog.trifork.com/wp-content/uploads/2013/06/Riak_product_logo.png',
     price: 1755,
+    inCart: false,
     description: "This is an amazing item. It's the most base-ey database out there. Super duper mongo rager\nHey new line mongo rager."
   },{
     name: 'MySQL',
     thumbnail: 'http://www.arvixe.com/images/landing_pages/mysql_hosting.png',
     price: 1007,
+    inCart: false,
     description: "Such an old school database, but we can't deny that it can get the job done.\nWhy is everyone talking about postgress? "
   }
 ];

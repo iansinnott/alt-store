@@ -23,7 +23,7 @@ module.exports = React.createClass({
             className='btn'
             params={{ id: item._id }}
             >Item Details</Link>
-          <a class="btn">Add to cart</a>
+          <a className="btn">Add to cart</a>
         </li>
       );
     });
