@@ -9,6 +9,7 @@ function ItemStore() {
 
   this.bindListeners({
     handleAddToCart: ItemActions.ADD_TO_CART,
+    handleRemoveFromCart: ItemActions.REMOVE_FROM_CART,
     handleUpdateItems: ItemActions.UPDATE_ITEMS,
     handleUpdateFailed: ItemActions.UPDATE_FAILED
   });
@@ -17,7 +18,17 @@ function ItemStore() {
 _.extend(ItemStore.prototype, {
 
   handleAddToCart(item) {
-    this.items.push(item);
+
+    // Don't add the item to the cart if it's already there.
+    if (_.contains(this.cart, item)) return;
+
+    this.cart.push(item);
+    item.inCart = true;
+  },
+
+  handleRemoveFromCart(item) {
+    _.remove(this.cart, item);
+    item.inCart = false;
   },
 
   handleUpdateItems(items) {

@@ -13,6 +13,13 @@ class ItemActions {
   }
 
   /**
+   * Remove an item from the cart.
+   */
+  removeFromCart(item) {
+    this.dispatch(item);
+  }
+
+  /**
    * Update all items. This will replace the existing items collection with the
    * new one passed to this func.
    */

@@ -4,7 +4,9 @@ var React = require('react');
 var debug = require('debug')('app:ItemList');
 var { Link } = require('react-router');
 
+var ItemActions = require('../../actions/ItemActions.js');
 var { formatMoney } = require('../../lib/utils.js');
+var CartButton = require('./CartButton.js');
 
 /**
  * @module ItemList
@@ -23,7 +25,7 @@ module.exports = React.createClass({
             className='btn'
             params={{ id: item._id }}
             >Item Details</Link>
-          <a className="btn">Add to cart</a>
+          <CartButton item={item} onClick={this.addToCart.bind(this, item)} />
         </li>
       );
     });
@@ -33,6 +35,14 @@ module.exports = React.createClass({
         {items}
       </div>
     );
+  },
+
+  /**
+   * We do validation to make sure the item isn't already in the sture in the
+   * store itself, so we don't need to do any checking here.
+   */
+  addToCart(item, e) {
+    ItemActions.addToCart(item);
   }
 
 });
