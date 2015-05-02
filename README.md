@@ -2,7 +2,7 @@
 
 ## What is this?
 
-A flux-based online store. Built using the [Alt][alt] Flux library
+A flux-based online store. Built using the [Alt][alt] Flux library. Built to test out [Alt][alt] as a flux implementation.
 
 [alt]: http://alt.js.org
 
@@ -29,14 +29,10 @@ After you have the db create in your local `db/` folder you can run the app for 
 $ npm install
 $ gulp
 ```
-DefaultRoute
 
 ## Thoughts on Alt
 
-Alt does some weird shit where you must call `this.actions.<method-name>`
-order to access other actions defined on an action creators prototype. This
-super unintuitive and not obvious. Pretty lame, but other than this I like A
-so far. For an example, see `fetchItems` in `client/actions/ItemActions.js`.
+Alt does some weird shit where you must call `this.actions.<method-name>` order to access other actions defined on an action creators prototype. This is super unintuitive and not obvious. Pretty lame, but other than this I quite like Alt so far. For an example, see `fetchItems` in `client/actions/ItemActions.js`.
 
 I never did end up looking at the code hard enough to find out what they are doing behind the scenes. Here's [the code in question][code].
 
