@@ -8,6 +8,27 @@ require("font-awesome-webpack");
 
 var ItemStore = require('../stores/ItemStore.js');
 var ItemActions = require('../actions/ItemActions.js');
+var utils = require('../lib/utils.js');
+
+var CartMiniDisplay = React.createClass({
+
+  render() {
+    var totalQty = this.props.cart.reduce((total, item) => {
+      return total + item.qty;
+    }, 0);
+
+    var totalPrice = utils.formatMoney(utils.getTotal(this.props.cart));
+
+    return (
+      <span className='CartMiniDisplay'>
+        <i className="fa fa-shopping-cart" />
+        <span className='totalQty'>{totalQty}</span>
+        <span className='total'>${totalPrice}</span>
+      </span>
+    );
+  }
+
+});
 
 /**
  * @module Layout
@@ -36,7 +57,12 @@ module.exports = React.createClass({
             <nav>
               <ul>
                 <li><Link to='items'>Shop</Link></li>
-                <li><Link to='cart'>Cart</Link></li>
+                <li>
+                  <Link to='cart'>
+                    Cart
+                    <CartMiniDisplay cart={this.state.cart} />
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>
