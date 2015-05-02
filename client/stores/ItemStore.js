@@ -10,6 +10,8 @@ function ItemStore() {
   this.bindListeners({
     handleAddToCart: ItemActions.ADD_TO_CART,
     handleRemoveFromCart: ItemActions.REMOVE_FROM_CART,
+    handleIncreaseItem: ItemActions.INCREASE_ITEM,
+    handleDecreaseItem: ItemActions.DECREASE_ITEM,
     handleUpdateItems: ItemActions.UPDATE_ITEMS,
     handleUpdateFailed: ItemActions.UPDATE_FAILED
   });
@@ -24,11 +26,29 @@ _.extend(ItemStore.prototype, {
 
     this.cart.push(item);
     item.inCart = true;
+    item.qty++;
   },
 
   handleRemoveFromCart(item) {
     _.remove(this.cart, item);
     item.inCart = false;
+    item.qty = 0;
+  },
+
+  handleIncreaseItem(item) {
+    item.qty++;
+  },
+
+  /**
+   * Decrease item serves double duty b/c if the item qty drops below 1 we want
+   * to remove it from cart. Another option would be to disable decreasing an
+   * item if the qty goes to 1, but I like this option. More intuitive.
+   */
+  handleDecreaseItem(item) {
+    if (item.qty <= 1)
+      this.handleRemoveFromCart(item);
+    else
+      item.qty--;
   },
 
   handleUpdateItems(items) {

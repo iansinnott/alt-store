@@ -44,6 +44,7 @@ module.exports = React.createClass({
         <div className="container">
           <RouteHandler
             items={this.state.items}
+            cart={this.state.cart}
             {...this.props} />
         </div>
       </div>

@@ -7,6 +7,7 @@ class ItemActions {
 
   /**
    * Add an item to the cart.
+   * @param {object} item
    */
   addToCart(item) {
     this.dispatch(item);
@@ -14,6 +15,7 @@ class ItemActions {
 
   /**
    * Remove an item from the cart.
+   * @param {object} item
    */
   removeFromCart(item) {
     this.dispatch(item);
@@ -22,11 +24,32 @@ class ItemActions {
   /**
    * Update all items. This will replace the existing items collection with the
    * new one passed to this func.
+   * @param {array} items Array of items to replace all existing items.
    */
   updateItems(items) {
     this.dispatch(items);
   }
 
+  /**
+   * Increase the quantity of an item
+   * @param {object} item
+   */
+  increaseItem(item) {
+    this.dispatch(item);
+  }
+
+  /**
+   * Decrease the quantity of an item
+   * @param {object} item
+   */
+  decreaseItem(item) {
+    this.dispatch(item);
+  }
+
+  /**
+   * Dispatch an error message indicating that the ajax update failed.
+   * @param {string} message Error message
+   */
   updateFailed(message) {
     this.dispatch(message);
   }

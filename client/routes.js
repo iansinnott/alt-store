@@ -5,30 +5,7 @@ var { Route, DefaultRoute } = Router;
 var Layout = require('./components/Layout.js');
 var ItemList = require('./components/Items/ItemList.js');
 var ItemDetails = require('./components/Items/ItemDetails.js');
-
-var Home = React.createClass({
-
-  render() {
-    return (
-      <div className='Home'>
-        <span className='temp'>Home</span>
-      </div>
-    );
-  }
-
-});
-
-var Cart = React.createClass({
-
-  render() {
-    return (
-      <div className='Cart'>
-        <span className='temp'>Cart</span>
-      </div>
-    );
-  }
-
-});
+var Cart = require('./components/Cart/Cart.js');
 
 // Routes
 module.exports = (
